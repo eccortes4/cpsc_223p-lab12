@@ -35,5 +35,14 @@ class User:
             print("Username not found please try agian")
             return False
 
+    def logout(self) :
+        self.logedin = False
+        return "Logout Successful"
     
-    
+    def delete_account(self, password) :
+        for user in self.user_list :
+            if self.user_list[self.name] == password :
+                del self
+                return True
+            else :
+                return "Error incorrect password"
