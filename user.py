@@ -46,3 +46,13 @@ class User:
                 return True
             else :
                 return "Error incorrect password"
+    def send_message(user, message) :
+        with open('messages.json', 'a') as messages:
+            new_message = {user : message}
+            json.dump(new_message)
+    
+    def load_message(self, user) :
+        with open('messages.json', 'r') as messages:
+            for message in messages.load():
+                if user == self.name:
+                    self.messages.update(message)
