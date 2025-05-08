@@ -61,7 +61,8 @@ class User:
             del self
             return True
         else :
-            return "Error incorrect password"
+            print("Incorrect password")
+            return False
             
     def send_message(user, message) :
         with open('messages.json', 'a') as messages:

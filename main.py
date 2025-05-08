@@ -33,7 +33,8 @@ Menu
                 pass
             elif option == '3':
                 password = input("Enter password to confirm: ")
-                main_user.delete_account(password)
+                if  main_user.delete_account(password):
+                    break
             elif option == '4':
                 break
             
