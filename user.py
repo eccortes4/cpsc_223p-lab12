@@ -15,8 +15,8 @@ class User:
 
     def login(self, name, password) :
         for user in self.user_list:
-            if self.name == user['name']:
-                if self.name[password] == user['password']:
+            if name == user['name']:
+                if password == user['password']:
                     print("Correct Password")
                     print("Login Successful")
                     self.logedin = True
