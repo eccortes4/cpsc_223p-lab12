@@ -14,19 +14,21 @@ class User:
         self.__password = new_password
 
     def login(self, name, password) :
-        if name in self.user_list :
-            print("Correct Username")
-            if password in self.user_list :
-                print("Correct Password")
-                print("Login Successful")
-                self.logedin = True
-                return True
-            else :
-                print("Password not found try again")
-                return False
-        else :
-            print("Username not found please try agian")
-            return False
+        for user in self.user_list:
+            if self.name == user['name']:
+                if self.name[password] == user['password']:
+                    print("Correct Password")
+                    print("Login Successful")
+                    self.logedin = True
+                    return True
+                else :
+                    print("Password not found try again")
+                    return False
+        
+        print("Username not found please try agian")
+        return False
+        
+
 
     def logout(self) :
         self.logedin = False
