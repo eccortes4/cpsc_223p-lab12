@@ -74,3 +74,17 @@ class User:
             for message in messages.load():
                 if user == self.name:
                     self.messages.update(message)
+
+    def add_friend(self, name) :
+        for user in self.user_list:
+            if name == user['name']:
+                print("Username found!")
+                self.friends.append[name]
+                print("Friend successfully added!")
+                return True
+        
+        print("Username not found")
+        return False
+    
+    def show_friends_list(self) :
+        return self.friends
