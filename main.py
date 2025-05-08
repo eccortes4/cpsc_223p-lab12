@@ -7,14 +7,16 @@ while True:
     print("""
 Menu
 1. Login
-2. Create Account""")
+2. Create Account
+3. Exit""")
+
     choice = input("Enter choice: ")
     if choice == '1':
         name = input("Enter username: ")
         password = input("Enter password: ")
         if name not in User.user_list:
-            print("Incorrect username or user does not exist")
-            continue
+           print("Incorrect username or user does not exist")
+           continue
         if password != User.user_list[name]:
             print("Invalid password")
             continue
@@ -25,7 +27,8 @@ Menu
 Menu
 1. Send Message
 2. View Messages
-3. Delete Account""")
+3. Delete Account
+4. Exit""")
             option = input("Select option: ")
             if option == '1':
                 pass
@@ -39,3 +42,6 @@ Menu
         new_user = User(name, password)
         new_user._save_account()
         continue
+
+    elif choice == '3' :
+        break

@@ -8,6 +8,12 @@ class User:
         self.messages = {}
         self.friends = []
         self.logedin = False
+        user =  {
+            "name" : self.name,
+            "password" : self.__password
+        }
+        self.user_list.append(user)
+        
 
     def changePassword(self, new_password):
         self.__password = new_password
@@ -17,15 +23,11 @@ class User:
             json.dump(self.user_list, file)
 
     def login(self, name, password) :
-        if self.name in self.user_list :
+        if name in self.user_list :
             print("Correct Username")
-            if self.__password in self.user_list :
+            if password in self.user_list :
                 print("Correct Password")
                 print("Login Successful")
-                user = {
-                    name : password
-                }
-                self.user_list.append(user)
                 self.logedin = True
                 return True
             else :
@@ -46,6 +48,7 @@ class User:
                 return True
             else :
                 return "Error incorrect password"
+            
     def send_message(user, message) :
         with open('messages.json', 'a') as messages:
             new_message = {user : message}
