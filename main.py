@@ -26,7 +26,16 @@ Menu
 4. Exit""")
             option = input("Select option: ")
             if option == '1':
+                message = input("Enter message: ")
+                recipient = input("Enter recipient")
+                main_user.send_message(message)
+            elif option == '2':
                 pass
+            elif option == '3':
+                password = input("Enter password to confirm: ")
+                main_user.delete_account(password)
+            elif option == '4':
+                break
             
     elif choice == '2':
         name = input("Enter username: ")

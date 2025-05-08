@@ -52,12 +52,16 @@ class User:
         return True
     
     def delete_account(self, password) :
-        for user in self.user_list :
-            if self.user_list[self.name] == password :
-                del self
-                return True
-            else :
-                return "Error incorrect password"
+        if self.__password == password :
+            del_user = {
+            "name" : self.name,
+            "password" : self.__password
+            }
+            self.user_list.remove(del_user)
+            del self
+            return True
+        else :
+            return "Error incorrect password"
             
     def send_message(user, message) :
         with open('messages.json', 'a') as messages:
