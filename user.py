@@ -38,16 +38,16 @@ class User:
                 print("Username is taken")
                 return False
             
-            print("Account Created")
-            new_user =  {
-            "name" : self.name,
-            "password" : self.__password
-            }
-            self.user_list.append(new_user)
-            with open('account_management', 'w') as file:
-                json.dump(self.user_list, file)
+        print("Account Created")
+        new_user =  {
+        "name" : self.name,
+        "password" : self.__password
+        }
+        self.user_list.append(new_user)
+        with open('account_management', 'w') as file:
+            json.dump(self.user_list, file)
             
-            return True
+        return True
     
     def delete_account(self, password) :
         for user in self.user_list :
