@@ -14,14 +14,9 @@ Menu
     if choice == '1':
         name = input("Enter username: ")
         password = input("Enter password: ")
-        if name not in User.user_list:
-           print("Incorrect username or user does not exist")
-           continue
-        if password != User.user_list[name]:
-            print("Invalid password")
-            continue
         main_user = User(name, password)
-        main_user.login(name, password)
+        if not main_user.login(name = name, password = password):
+            continue
         while True:
             print("""
 Menu
@@ -36,12 +31,10 @@ Menu
     elif choice == '2':
         name = input("Enter username: ")
         password = input("Enter password: ")
-        if name in User.user_list:
-            print("Username is already taken")
-            continue
         new_user = User(name, password)
-        new_user._save_account()
-        continue
+        account_created = new_user.create_account()
+        if not account_created:
+            continue
 
     elif choice == '3' :
         break
