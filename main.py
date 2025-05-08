@@ -1,7 +1,10 @@
 """Main function that displays the menu and allows for user interface"""
 
 from user import User
+import json
 main_user = None
+with open("account_management", 'r') as f:
+    User.user_list = json.load(f)
 while True:
     print("========Tuffy Social Media========")
     print("""
