@@ -65,9 +65,9 @@ class User:
             return False
             
     def send_message(user, message) :
+        new_message = {user : message}
         with open('messages.json', 'a') as messages:
-            new_message = {user : message}
-            json.dump(new_message)
+            json.dump(new_message, messages)
     
     def load_message(self, user) :
         with open('messages.json', 'r') as messages:
