@@ -26,19 +26,20 @@ Menu
 1. Send Message
 2. View Messages
 3. Delete Account
-4. Exit""")
+4. Logout""")
             option = input("Select option: ")
             if option == '1':
                 message = input("Enter message: ")
-                recipient = input("Enter recipient")
-                main_user.send_message(message)
+                recipient = input("Enter recipient: ")
+                main_user.send_message(recipient, message)
             elif option == '2':
-                pass
+                main_user.load_message()
             elif option == '3':
                 password = input("Enter password to confirm: ")
                 if  main_user.delete_account(password):
                     break
             elif option == '4':
+                main_user.logout()
                 break
             
     elif choice == '2':

@@ -58,22 +58,32 @@ class User:
             "password" : self.__password
             }
             self.user_list.remove(del_user)
+            with open('account_management', 'w') as file:
+                json.dump(self.user_list, file)
             del self
             return True
         else :
             print("Incorrect password")
             return False
             
-    def send_message(user, message) :
-        new_message = {user : message}
-        with open('messages.json', 'a') as messages:
-            json.dump(new_message, messages)
-    
-    def load_message(self, user) :
+    def send_message(self, user, message) :
+        msgs = None
+        new_message = {self.name : message}
         with open('messages.json', 'r') as messages:
-            for message in messages.load():
-                if user == self.name:
-                    self.messages.update(message)
+            msgs = json.load(messages)
+            if user in msgs:
+                msgs[user].append(new_message)
+            else:
+                msgs[user] = [new_message]
+        with open('messages.json', 'w') as messages:
+            json.dump(msgs, messages)
+    
+    def load_message(self) :
+        with open('messages.json', 'r') as messages:
+            msgs = json.load(messages)
+            my_messages = msgs[self.name]
+            for message in my_messages:
+                print(f"\n{list(message.keys())[0]}: {list(message.values())[0]}")
 
     def add_friend(self, name) :
         for user in self.user_list:
