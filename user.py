@@ -11,7 +11,17 @@ class User:
         
 
     def changePassword(self, new_password):
+        check = input("Enter Old Password: ")
+        if check != self.__password:
+            return False
         self.__password = new_password
+        for user in self.user_list:
+            if self.name == user['name']:
+                user['password'] = self.__password
+                with open('account_management', 'w') as file:
+                    json.dump(self.user_list, file)
+            
+        return True
 
     def login(self, name, password) :
         for user in self.user_list:

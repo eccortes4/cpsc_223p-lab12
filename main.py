@@ -26,7 +26,8 @@ Menu
 1. Send Message
 2. View Messages
 3. Delete Account
-4. Logout""")
+4. Change Password
+5. Logout""")
             option = input("Select option: ")
             if option == '1':
                 message = input("Enter message: ")
@@ -39,9 +40,14 @@ Menu
                 if  main_user.delete_account(password):
                     break
             elif option == '4':
+                new_password = input("Enter new password: ")
+                if not main_user.changePassword(new_password):
+                    print("Incorrect Password")
+                    continue
+                
+            elif option == '5':
                 main_user.logout()
                 break
-            
     elif choice == '2':
         name = input("Enter username: ")
         password = input("Enter password: ")
