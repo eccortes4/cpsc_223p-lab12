@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 class User:
     user_list = []
 
@@ -91,8 +92,15 @@ class User:
             
     def send_message(self, user, message) :
         msgs = None
-        new_message = {self.name : message}
-        if user not in User.user_list:
+        user_exists = False
+        time = datetime.now()
+        format = time.strftime("%I:%M %p")
+        new_message = {self.name : f'{message} @ {format}'}
+        for users in self.user_list:
+            if user == users['name']:
+                user_exists = True
+                break
+        if not user_exists:        
             return False
         with open('messages.json', 'r') as messages:
             msgs = json.load(messages)
