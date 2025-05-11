@@ -26,8 +26,11 @@ Menu
 1. Send Message
 2. View Messages
 3. Delete Account
-4. Change Password
-5. Logout""")
+4. Change Username
+5. Change Password
+6. Add Friends
+7. Show Friends List
+8. Logout""")
             option = input("Select option: ")
             if option == '1':
                 message = input("Enter message: ")
@@ -39,15 +42,29 @@ Menu
                 password = input("Enter password to confirm: ")
                 if  main_user.delete_account(password):
                     break
-            elif option == '4':
+            
+            elif option == '4' :
+                new_username = input("Enter new username: ")
+                main_user.change_username(new_username)
+                
+            elif option == '5':
                 new_password = input("Enter new password: ")
                 if not main_user.changePassword(new_password):
                     print("Incorrect Password")
                     continue
-                
-            elif option == '5':
+            elif option == '6' :
+                new_friend = input("Enter the username you want to add as a friend: ")
+                main_user.add_friend(new_friend)
+                print("Friend added successfully")
+
+            elif option == '7' :
+               print("Friends List: ")
+               print(main_user.show_friends_list())
+
+            elif option == '8':
                 main_user.logout()
                 break
+
     elif choice == '2':
         name = input("Enter username: ")
         password = input("Enter password: ")

@@ -22,6 +22,19 @@ class User:
                     json.dump(self.user_list, file)
             
         return True
+    
+    def change_username(self, new_username):
+        check = input("Enter Old Usename: ")
+        if check != self.name:
+            return False
+        for user in User.user_list:
+            if user['name'] == self.name :
+                user['name'] = new_username
+                self.name = new_username
+                with open('account_management', 'w') as file:
+                    json.dump(User.user_list, file)
+            
+        return True
 
     def login(self, name, password) :
         for user in self.user_list:
@@ -99,7 +112,7 @@ class User:
         for user in self.user_list:
             if name == user['name']:
                 print("Username found!")
-                self.friends.append[name]
+                self.friends.append(name)
                 print("Friend successfully added!")
                 return True
         
