@@ -35,7 +35,8 @@ Menu
             if option == '1':
                 message = input("Enter message: ")
                 recipient = input("Enter recipient: ")
-                main_user.send_message(recipient, message)
+                if not main_user.send_message(recipient, message):
+                    print("The user you wish to message does not exist")
             elif option == '2':
                 main_user.load_message()
             elif option == '3':
@@ -54,12 +55,13 @@ Menu
                     continue
             elif option == '6' :
                 new_friend = input("Enter the username you want to add as a friend: ")
-                main_user.add_friend(new_friend)
-                print("Friend added successfully")
+                if not main_user.add_friend(new_friend):
+                    print("The user you wish to add does not exist")
 
             elif option == '7' :
                print("Friends List: ")
-               print(main_user.show_friends_list())
+               for friend in main_user.show_friends_list():
+                print(friend)
 
             elif option == '8':
                 main_user.logout()

@@ -92,6 +92,8 @@ class User:
     def send_message(self, user, message) :
         msgs = None
         new_message = {self.name : message}
+        if user not in User.user_list:
+            return False
         with open('messages.json', 'r') as messages:
             msgs = json.load(messages)
             if user in msgs:
@@ -100,6 +102,7 @@ class User:
                 msgs[user] = [new_message]
         with open('messages.json', 'w') as messages:
             json.dump(msgs, messages)
+        return True
     
     def load_message(self) :
         with open('messages.json', 'r') as messages:
